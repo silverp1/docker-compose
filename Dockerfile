@@ -3,11 +3,8 @@ FROM docker:latest
 ENV COMPOSE_VERSION 1.14.0-rc1
 
 RUN set -ex; \
-    apk add --no-cache --virtual .fetch-deps \
-		curl \
+    apk add --no-cache --virtual .build-deps \
+		python3 \
     ; \
-    curl -fL -o /usr/local/bin/docker-compose \
-         https://github.com/docker/compose/releases/download/${COMPOSE_VERSION}/run.sh \
-    ; \
-    chmod +x /usr/local/bin/docker-compose; \
-    apk del .fetch-deps;
+    pip3 install docker-compose==$COMPOSE_VERSION; \
+    docker-compose -v
