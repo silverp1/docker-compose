@@ -1,6 +1,6 @@
 FROM docker:latest
 
-ENV COMPOSE_VERSION 1.14.0-rc1
+ENV COMPOSE_VERSION 1.16.0-rc1
 
 RUN set -ex; \
     apk add --no-cache --virtual .build-deps \
